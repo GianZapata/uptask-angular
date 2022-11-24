@@ -1,0 +1,15 @@
+   <h1 class="text-4xl font-black">Proyectos</h1>
+   <div class="bg-white shadow mt-10 rounded-br-lg">      
+      <ng-container *ngIf="projects.length; else elseProjects">
+         <app-preview-project
+            [project]="project"
+            *ngFor="let project of projects;"
+         ></app-preview-project>
+      </ng-container>
+      <ng-template #elseProjects >
+         <p class="text-center text-gray-600 uppercase p-5">
+            No hay proyectos
+         </p>
+      </ng-template>
+   </div>
+

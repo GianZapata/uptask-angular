@@ -1,0 +1,27 @@
+
+<app-auth-layout>
+   <h1 class="text-sky-600 font-black text-6xl capitalize text-center">
+   Confirma tu cuenta y comienza a crear tus
+      <span class="text-slate-700">proyectos</span>
+
+   <div class="mt-20 md:mt-10 shadow-lg px-5 py-10 rounded-xl bg-white">
+      
+      <div
+         [ngClass]="isConfirmed ? 'from-sky-400 to-sky-600' : 'from-red-400 to-red-600'"
+         class=" bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm my-10"
+      >
+         <p 
+            *ngIf="isConfirmed"
+         >Usuario confirmado correctamente, ya puedes iniciar sesión</p>
+         <p 
+            *ngIf="!isConfirmed"
+         >Token no valido, la cuenta no se confirmo</p>
+      </div>
+      <a 
+         *ngIf="isConfirmed"
+         href="/auth/login" 
+         class="text-center font-bold text-sm text-slate-600 uppercase mt-5 block"
+      >Ya puedes Iniciar Sesión </a>
+   </div>
+</h1>
+</app-auth-layout>

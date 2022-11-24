@@ -1,0 +1,14 @@
+<div class="border-b p-5 flex">
+   <p class="flex-1">
+      {{project.name}}
+      <span
+         class="text-xs text-gray-500 uppercase"
+      >{{ project.client }}</span>
+   </p>
+   <a 
+      routerLink="/projects/show/{{project._id}}" 
+      class="text-gray-600 hover:text-gray-800 uppercase text-sm font-bold "
+   >
+      Ver Proyecto
+   </a>
+</div>

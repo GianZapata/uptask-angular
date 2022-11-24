@@ -1,0 +1,123 @@
+<app-auth-layout>
+   <h1 class="text-sky-600 font-black text-6xl capitalize text-center">
+      Crea tu cuenta y administra tus 
+         <span class="text-slate-700">proyectos</span>
+   </h1>
+   
+   <div 
+      class="from-sky-400 to-sky-600 bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm my-10"
+      *ngIf="showSuccessMessage"
+   >
+      Usuario creado correctamente, revisa tu email para confirmar tu cuenta
+   </div>
+
+   <div 
+      class=" from-red-400 to-red-600 bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm my-10"
+      *ngIf="showErrorMessage"
+   >
+      {{ errorMessage }}
+   </div>
+
+   <form 
+      class="my-10 space-y-5 bg-white shadow rounded-lg p-10" 
+      [formGroup]="signupForm" (ngSubmit)="onRegisterUser()"
+   >
+
+      <div>
+         <label 
+            for="name" 
+            class="uppercase text-gray-600 block text-xl font-bold">Nombre</label>
+         <input 
+            id="name"
+            type="text"
+            class="w-full border bg-gray-50 border-gray-300 rounded-lg px-4 py-2 mt-2 focus:outline-none "
+            placeholder="Tu Nombre"
+            formControlName="name"  
+         >
+      </div>
+      <div>
+         <label for="lastName" class="uppercase text-gray-600 block text-xl font-bold">Apellido</label>
+         <input 
+            id="lastName"
+            type="text"
+            placeholder="Tus Apellidos"
+            class="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-none"
+            formControlName="lastName"
+         >
+      </div>
+      <div>
+         <label for="email" class="uppercase text-gray-600 block text-xl font-bold">Email</label>
+         <input 
+            id="email"
+            type="email"
+            placeholder="Tu Correo"
+            class="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-none"
+            formControlName="email"
+         >
+      </div>
+      <div>
+         <label for="password" class="uppercase text-gray-600 block text-xl font-bold">Contraseña</label>
+         <input 
+            id="password"
+            type="password"
+            placeholder="Contraseña de Registro"
+            class="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-none"
+            formControlName="password"
+         >
+      </div>
+      <div>
+         <label for="passwordConfirm" class="uppercase text-gray-600 block text-xl font-bold">Repetir Contraseña</label>
+         <input 
+            id="passwordConfirm"
+            type="password"
+            placeholder="Repetir tu Contraseña"
+            class="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-none"
+            formControlName="passwordConfirm"
+         >
+      </div>
+      <button
+         class="bg-sky-600 hover:bg-sky-800 text-white font-bold uppercase text-xl w-full py-3 rounded-xl cursor-pointer transition-colors duration-300 ease-in flex items-center justify-center"
+         type="submit"
+         [disabled]="signupForm.invalid"
+         [ngClass]="{ 'opacity-50 cursor-not-allowed': signupForm.invalid }"
+      >
+         <div 
+            *ngIf="isSending"
+            class="h-5 mr-2"
+         >
+            <svg
+               class="animate-spin h-full w-full"
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               >
+               <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+               ></circle>
+               <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+               ></path>
+            </svg>
+         </div>
+         Crear cuenta
+      </button>
+   </form>
+   <nav class="lg:flex lg:justify-between">
+      <a 
+         class="block text-center text-slate-500 font-semibold uppercase text-sm"
+         routerLink="/auth/login"
+      >¿Ya tienes una cuenta? Inicia Sesión</a>
+      <a 
+         class="block text-center text-slate-500 font-semibold uppercase text-sm"
+         routerLink="/auth/recover-password"
+      >¿Olvidaste tu contraseña?</a>
+   </nav>
+   
+</app-auth-layout>
